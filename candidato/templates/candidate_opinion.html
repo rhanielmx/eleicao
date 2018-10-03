@@ -1,0 +1,22 @@
+{% extends 'profile.html' %}
+{% load static %}
+
+{% block title %}{{candidate.nickname}} - Opiniões{% endblock %}
+{% block page-top %}
+      {% block opinions %}
+          <div class="my-auto">
+            <h2 class="mb-5">Mais Informações</h2>
+
+            <ul class="list-inline">
+                {% for info in infos %}
+                <li class="row container list-inline-item">
+                    <a href="{{info.url_name}}" target="_blank">{{ info.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+      {% endblock %}
+      {% endblock %}
+
+

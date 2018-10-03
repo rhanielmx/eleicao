@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+            integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+            crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+    <link href="{% static 'all.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'resume.min.css' %}" rel="stylesheet">
+    <link rel="icon" href="{% static 'imgs/election.ico' %}">
+
+</head>
+
+<body id="page-top">
+
+{% block navbar %}{% endblock %}
+{% block page-top %}{% endblock %}
+
+
+<div class="container-fluid p-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+        {% block about %}
+        {% endblock %}
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
+        {% block experience %}
+        {% endblock %}
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
+        {% block education %}
+        {% endblock %}
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="opinion">
+        {% block opinions %}
+        {% endblock %}
+    </section>
+
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="info">
+        {% block info %}
+        {% endblock %}
+    </section>
+
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="project">
+        {% block project %}
+        {% endblock %}
+    </section>
+
+
+</div>
+{% block footer %}
+{% endblock %}
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+
+<!-- Plugin JavaScript -->
+<script src="{% static 'jquery.easing.min.js' %}"></script>
+
+<!-- Custom scripts for this template -->
+<script src="{% static 'resume.min.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="{% static '
+jquery - slim.min.js
+' %}"><\/script>'
+)</script>
+<script src="{% static 'popper.min.js' %}"></script>
+<script src="{% static 'bootstrap.min.js' %}"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,179 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'imgs/election.ico' %}">
+
+    <title>Sobre</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'sticky-footer-navbar.css' %}" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+            integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+            crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+
+</head>
+
+<body style="background-color: lightgray">
+
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/">Eleições 2018</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href="/candidato/list">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-users d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11">
+                            Candidatos<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/vote/vote">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-check d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11">
+                            Deixe seu voto<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/sobre">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-info-circle d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11">
+                            Sobre<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- Begin page content -->
+<main role="main" class="container">
+    <h1 class="mt-5" id="#sobre">Sobre</h1>
+    <h3 class="mt-4">Projeto</h3>
+    <p class="lead text-justify">
+        O projeto foi meu primeiro projeto desenvolvido usando as tecnologias python com o framework django
+        para back-end e html, css, javascript com os frameworks jQuery e Bootstrap 4 para front-end. Todo o
+        código do projeto está disponível no meu
+        <a class="text-muted" href="https://github.com/rhanielmx/eleicao/" target="_blank">github.</a>
+    </p>
+    <h3 class="mt-4">Votos</h3>
+    <p class="lead text-justify">
+        A página "Deixe seu Voto" foi criada apenas para ter uma noção dos candidatos de interesse das pessoas
+        que acessaram o site e se houve alguma mudança após conhecerem melhor os candidatos. Nenhuma informação
+        é armazenada, além das preenchidas pelo usuário. Notem também que essas informações não tem valor para
+        comparação com as pesquisas reais, visto que ela só leva em conta as poucas pessoas que chegaram a ter
+        acesso a esse site.
+    </p>
+    <p class="lead text-justify">
+        Os gráficos da página de votos foram gerados usando as bibliotecas d3, dc e crossfilter do javascript e
+        são atualizados automaticamente com a submissão do formulário. O código também está disponível no github em
+        <a class="text-muted" href="https://github.com/rhanielmx/eleicao/blob/master/home/templates/vote.html" target="_blank">home/templates/vote.html</a>
+        O código responsável por atualizar a tabela está presente no github de <a class="text-muted" href="https://github.com/HamsterHuey/intothevoid.io/blob/master/code/2017/dcjs%20sortable%20table/dcjsSortableTable.html" target="_blank">Sudeep Mandal.</a>
+
+    </p>
+    <h3 class="mt-4">Perfis de Candidato</h3>
+    <p class="lead text-justify">
+        As nuvens de palavras presentes foram geradas a partir dos planos de governo de cada candidato. Primeiro
+        convertendo o pdf para arquivo de texto usando uma alteração do script
+        <a href="https://github.com/piyushkhemka/Pdf-to-Word-Cloud?files=1"><span class="text-muted">pdfparser.py</span></a> e em seguida usando
+        o arquivo de texto para gerar a nuvem com o script generate_wordcloud.py também estará presente no meu github.
+    </p>
+
+
+    <br>
+
+    <h1 class="mt-5" id="#contato">Contato</h1>
+    <p class="lead text-justify">
+        Encontrou alguma informação de procedência duvidosa, quer acrescentar novas informações ou sugerir melhorias para o site?
+        Entre em contato comigo por e-mail ou pelas redes sociais.
+    </p>
+    <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+        <div class="row">
+            <div class="social-icons ">
+                <div class="col md-3">
+                    <a href="https://www.facebook.com/rhaniel.magalhaesxavier" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                        <span class="text-muted">Rhaniel Magalhães</span>
+                    </a>
+                </div>
+                <div class="col md-3">
+                    <a href="https://www.instagram.com/rhanielmx/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        <span class="text-muted">rhanielmx</span>
+                    </a>
+                </div>
+                <div class="col md-3">
+                    <a href="https://twitter.com/rhanielmx" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                        <span class="text-muted">rhanielmx</span>
+                    </a>
+                </div>
+                <div class="col md-3">
+                    <a href="tel:85996025480" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <span class="text-muted">(85)99602-5480</span>
+                    </a>
+                </div>
+                <div class="col md-3">
+                    <a href="mailto:rhanielmag.xavier@gmail.com" target="_blank">
+                        <i class="fas fa-envelope"></i>
+                        <span class="text-muted">rhanielmag.xavier@gmail.com</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer" style="background-color: #363C42">
+    <div class="container text-center">
+        <span class="text-muted">Vote com juízo.</span>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="{% static '
+jquery - slim.min.js
+' %}"><\/script>'
+)</script>
+<script src="{% static 'popper.min.js' %}"></script>
+<script src="{% static 'bootstrap.min.js' %}"></script>
+</body>
+</html>

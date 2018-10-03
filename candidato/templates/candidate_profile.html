@@ -1,0 +1,396 @@
+{% extends 'profile.html' %}
+{% load static %}
+
+{% block title %}{{candidate.nickname}}{%  endblock %}
+
+
+{% block page-top %}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav"
+     style="background-color: {{candidate.color}} !important;">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none">{{candidate.nickname}}</span>
+
+        <span class="d-none d-lg-block">
+            {% if candidate.number == 12 %}
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'imgs/ciro.jpg' %}"
+                     alt="Foto do Ciro">
+            {% elif candidate.number == 13 %}
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'imgs/haddad.jpg' %}"
+                     alt="Foto do Haddad">
+            {% elif candidate.number == 15 %}
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'imgs/meirelles.jpg' %}"
+                     alt="Foto do Meirelles">
+            {% elif candidate.number == 16 %}
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'imgs/vera.jpg' %}"
+                     alt="Foto da Vera Lúcia">
+            {% elif candidate.number == 17 %}
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'imgs/bolsonaro.jpg' %}"
+                     alt="Bolo Misto">
+            {% elif candidate.number == 18 %}
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'imgs/marina.jpg' %}"
+                     alt="Foto da Marina">
+            {% elif candidate.number == 19 %}
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'imgs/dias.jpg' %}"
+                     alt="Foto do Álvaro Dias">
+            {% elif candidate.number == 27 %}
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'imgs/eymael.jpg' %}"
+                     alt="Foto do Eymael">
+            {% elif candidate.number == 30 %}
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'imgs/amoedo.jpg' %}"
+                     alt="Foto do Amoedo">
+            {% elif candidate.number == 45 %}
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'imgs/alckmin.jpg' %}"
+                     alt="Foto do Alckmin">
+            {% elif candidate.number == 50 %}
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'imgs/boulos.jpg' %}"
+                     alt="Foto do Boulos">
+            {% elif candidate.number == 51 %}
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'imgs/daciolo.jpg' %}"
+                     alt="Foto do Daciolo">
+            {% elif candidate.number == 54 %}
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'imgs/goulart.jpg' %}"
+                     alt="Foto do João Goulart">
+            {% endif %}
+        </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#about"
+                   style="color: {{candidate.font_color}} !important; font-size: 15px">Sobre</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#experience"
+                   style="color: {{candidate.font_color}} !important; font-size: 15px">Experiências</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#education"
+                   style="color: {{candidate.font_color}} !important; font-size: 15px">Formações</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#opinion"
+                   style="color: {{candidate.font_color}} !important; font-size: 15px">Opiniões</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#info"
+                   style="color: {{candidate.font_color}} !important; font-size: 15px">Informações</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#project"
+                   style="color: {{candidate.font_color}} !important; font-size: 15px">Projeto</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#" style="font-size: 24px;">{{candidate.nickname}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-home d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11 mx-1">
+                            Início<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/candidato/list">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-users d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11">
+                            Candidatos<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item active d-lg-none">
+                <a class="nav-link" href="#about">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-question-circle  d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11 mx-1">
+                            Sobre<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item active d-lg-none">
+                <a class="nav-link" href="#experience">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-briefcase d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11 mx-1">
+                            Experiências<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item active d-lg-none">
+                <a class="nav-link" href="#education">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-graduation-cap d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11">
+                            Formações<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item active d-lg-none">
+                <a class="nav-link" href="#opinion">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-gavel d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11 mx-1">
+                            Opiniões<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item active d-lg-none">
+                <a class="nav-link" href="#info">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-info-circle d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11 mx-1">
+                            Informações<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item active d-lg-none">
+                <a class="nav-link" href="#project">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-book d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11 mx-1">
+                            Projeto<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+{%  endblock %}
+
+{% block about %}
+<div class="my-auto">
+    <h1 class="mb-0 py-5">{{candidate.nickname}}
+        <span class="text-primary" style="color:{{candidate.color}} !important;">{{candidate.number}}</span>
+    </h1>
+    <div class="row container"></div>
+    <p class="lead mb-5">{{candidate.bio}}</p>
+    <span class="lead mb-5">
+        <h2>Chapa</h2>
+        <h3 class="mt-3">Presidente:</h3>
+        <a href="{{candidate_links.president}}" target="_blank">{{candidate.nickname}}</a>
+        <h3 class="mt-3">Vice-presidente:</h3>
+        <a href="{{candidate_links.vice}}" target="_blank">{{candidate.vice}}</a>
+    </span>
+    <br>
+    <br>
+    <div class="social-icons">
+        <a href="{{candidate_links.profile}}" target="_blank">
+            <i class="fas fa-address-book"></i>
+        </a>
+        <a href="{{candidate_links.twitter}}" target="_blank">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="{{candidate_links.facebook}}" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block experience %}
+
+<div class="my-auto">
+    <h2 class="mb-5">Experiência</h2>
+
+    {% for experience in experiences %}
+    <div class="resume-item d-flex flex-column flex-md-row mb-5">
+        <div class="resume-content mr-auto">
+            <h3 class="mb-0">{{experience.office}}</h3>
+            <div class="subheading mb-3">{{experience.employer}}</div>
+            <p>{{experience.description}}</p>
+        </div>
+        <div class="resume-date text-md-right">
+            <span class="text-primary">{{experience.start_date}} - {{experience.end_date}}</span>
+        </div>
+    </div>
+    {% endfor %}
+    {% endblock %}
+
+    {% block education %}
+    <div class="my-auto">
+        <h2 class="mb-5">Formação</h2>
+
+        {% for formation in formations %}
+        <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto">
+                <h3 class="mb-0">{{formation.formation}}</h3>
+                <div class="subheading mb-3">{{formation.university}}</div>
+            </div>
+            <div class="resume-date text-md-right">
+                <span class="text-primary">{{formation.start_date}} - {{formation.end_date}}</span>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    {% endblock %}
+
+    {% block opinions %}
+    <div class="my-auto">
+        <h2 class="mb-5">Opiniões - <a href="{%url 'candidates_opinion' candidate.url_name %}">Detalhes</a></h2>
+
+        <ul class="list-inline">
+            {% for opinion in opinions %}
+            <li class="row container list-inline-item">
+                <a href="{{opinion.url_name}}" target="_blank">{{ opinion.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% endblock %}
+
+        {% block info %}
+        <div class="my-auto">
+            <h2 class="mb-5">Informações</h2>
+
+            <ul class="list-inline">
+                {% for info in infos %}
+                <li class="row container list-inline-item">
+                    <a href="{{info.url_name}}" target="_blank">{{ info.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+        {% endblock %}
+
+        {% block project %}
+        <div class="my-auto">
+            <h2 class="mb-5">Projeto de Governo</h2>
+            <h3 class="mb-md-5"><a href="https://www.google.com.br/search?q=Nuvem de Palavras">Nuvem de Palavras</a> do
+                plano de Governo</h3>
+            <span class="">
+            {% if candidate.number == 12 %}
+                <div class="row">
+                    <img class="img-fluid mx-auto mb-2" style="width: fit-content; margin:auto"
+                         src="{% static 'imgs/wordclouds/ciro.png' %}"
+                         alt="Word Cloud do Ciro">
+                </div>
+            {% elif candidate.number == 13 %}
+                <div class="row">
+                    <img class="img-fluid mx-auto mb-2" style="width: fit-content; margin:auto"
+                         src="{% static 'imgs/wordclouds/haddad.png' %}"
+                         alt="Word Cloud do Haddad">
+                </div>
+                <div class="mx-md-5 pl-md-3"><span>Obs.: O Plano de governo do PT foi desenvolvido antes do lançamento oficial de Fernando Haddad como seu candidato.</span></div>
+            {% elif candidate.number == 15 %}
+                <div class="row">
+                    <img class="img-fluid mx-auto mb-2" style="width: fit-content; margin:auto"
+                         src="{% static 'imgs/wordclouds/meirelles.png' %}"
+                         alt="Word Cloud do Meirelles">
+                </div>
+            {% elif candidate.number == 16 %}
+                <div class="row">
+                    <img class="img-fluid mx-auto mb-2" style="width: fit-content; margin:auto"
+                         src="{% static 'imgs/wordclouds/vera.png' %}"
+                         alt="Word Cloud da Vera Lúcia">
+                </div>
+            {% elif candidate.number == 17 %}
+                <div class="row">
+                    <img class="img-fluid mx-auto mb-2" style="width: fit-content; margin:auto"
+                         src="{% static 'imgs/wordclouds/bolsonaro.png' %}"
+                         alt="Word Cloud do Bolo Misto">
+                </div>
+            {% elif candidate.number == 18 %}
+                <div class="row">
+                    <img class="img-fluid mx-auto mb-2" style="width: fit-content; margin:auto"
+                         src="{% static 'imgs/wordclouds/marina.png' %}"
+                         alt="Word Cloud da Marina">
+                </div>
+            {% elif candidate.number == 19 %}
+                <div class="row">
+                    <img class="img-fluid mx-auto mb-2" style="width: fit-content; margin:auto"
+                         src="{% static 'imgs/wordclouds/dias.png' %}"
+                         alt="Word Cloud do Álvaro Dias">
+                </div>
+            {% elif candidate.number == 27 %}
+                <div class="row">
+                    <img class="img-fluid mx-auto mb-2" style="width: fit-content; margin:auto"
+                         src="{% static 'imgs/wordclouds/eymael.png' %}"
+                         alt="Word Cloud do Eymael">
+                </div>
+            {% elif candidate.number == 30 %}
+                <div class="row">
+                    <img class="img-fluid mx-auto mb-2" style="width: fit-content; margin:auto"
+                         src="{% static 'imgs/wordclouds/amoedo.png' %}"
+                         alt="Word Cloud do Amoêdo">
+                </div>
+            {% elif candidate.number == 45 %}
+                <div class="row">
+                    <img class="img-fluid mx-auto mb-2" style="width: fit-content; margin:auto"
+                         src="{% static 'imgs/wordclouds/alckmin.png' %}"
+                         alt="Word Cloud do Alckmin">
+                </div>
+            {% elif candidate.number == 50 %}
+                <div class="row">
+                    <img class="img-fluid mx-auto mb-2" style="width: fit-content; margin:auto"
+                         src="{% static 'imgs/wordclouds/boulos.png' %}"
+                         alt="Word Cloud do Boulos">
+                </div>
+            {% elif candidate.number == 51 %}
+                <div class="row">
+                    <img class="img-fluid mx-auto mb-2" style="width: fit-content; margin:auto"
+                         src="{% static 'imgs/wordclouds/daciolo.png' %}"
+                         alt="Word Cloud do Daciolo">
+                </div>
+            {% elif candidate.number == 54 %}
+                <div class="row">
+                    <img class="img-fluid mx-auto mb-2" style="width: fit-content; margin:auto"
+                         src="{% static 'imgs/wordclouds/goulart.png' %}"
+                         alt="Word Cloud do João Goulart">
+                </div>
+            {% endif %}
+        </span>
+
+            <h3 class="mt-5">Arquivo do plano de governo</h3>
+            <a href="{{candidate_links.project}}" target="_blank">projeto_governo.pdf</a>
+
+
+        </div>
+        {% endblock %}
+
+
+        {% block footer %}
+
+        {% endblock %}

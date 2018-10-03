@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Candidatos{% endblock %}
+
+{% block header %}
+<!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="/">Eleições 2018</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/candidato/list">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-users d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11">
+                            Candidatos<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/vote/vote">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-check d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11">
+                            Deixe seu voto<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/sobre">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-info-circle d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11">
+                            Sobre<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+{% endblock %}
+{% block content %}
+<div class="row"></div>
+<br>
+<div class="row">
+    {% for candidate in candidates %}
+
+    {% if candidate.number != 0 %}
+    {% if candidate.number == 54 %}
+    <div class="col-12 text-center">
+        {% else %}
+        <div class="col-lg-4">
+            {% endif %}
+
+            <h2>{{candidate.nickname}}</h2>
+            {% if candidate.number == 12 %}
+            <a href="{%url 'candidates_profile' candidate.url_name %}" role="button">
+                <img class="rounded-circle" src="{% static 'imgs/ciro.jpg' %}" alt="Foto do Ciro" width="140"
+                     height="140">
+            </a>
+            {% elif candidate.number == 13 %}
+            <a href="{%url 'candidates_profile' candidate.url_name %}" role="button">
+                <img class="rounded-circle" src="{% static 'imgs/haddad.jpg' %}" alt="Foto do Haddad" width="140"
+                     height="140">
+            </a>
+            {% elif candidate.number == 15 %}
+            <a href="{%url 'candidates_profile' candidate.url_name %}" role="button">
+                <img class="rounded-circle" src="{% static 'imgs/meirelles.jpg' %}" alt="Foto do Meirelles" width="140"
+                     height="140">
+            </a>
+            {% elif candidate.number == 16 %}
+            <a href="{%url 'candidates_profile' candidate.url_name %}" role="button">
+                <img class="rounded-circle" src="{% static 'imgs/vera.jpg' %}" alt="Foto da Vera Lúcia" width="140"
+                     height="140">
+            </a>
+            {% elif candidate.number == 17 %}
+            <a href="{%url 'candidates_profile' candidate.url_name %}" role="button">
+                <img class="rounded-circle" src="{% static 'imgs/bolsonaro.jpg' %}" alt="Foto do Bolo Misto" width="140"
+                     height="140">
+            </a>
+            {% elif candidate.number == 18 %}
+            <a href="{%url 'candidates_profile' candidate.url_name %}" role="button">
+                <img class="rounded-circle" src="{% static 'imgs/marina.jpg' %}" alt="Foto da Marina" width="140"
+                     height="140">
+            </a>
+            {% elif candidate.number == 19 %}
+            <a href="{%url 'candidates_profile' candidate.url_name %}" role="button">
+                <img class="rounded-circle" src="{% static 'imgs/dias.jpg' %}" alt="Foto do Álvaro Dias" width="140"
+                     height="140">
+            </a>
+            {% elif candidate.number == 27 %}
+            <a href="{%url 'candidates_profile' candidate.url_name %}" role="button">
+                <img class="rounded-circle" src="{% static 'imgs/eymael.jpg' %}" alt="Foto do Eymael" width="140"
+                     height="140">
+            </a>
+            {% elif candidate.number == 30 %}
+            <a href="{%url 'candidates_profile' candidate.url_name %}" role="button">
+                <img class="rounded-circle" src="{% static 'imgs/amoedo.jpg' %}" alt="Foto do Amoedo" width="140"
+                     height="140">
+            </a>
+            {% elif candidate.number == 45 %}
+            <a href="{%url 'candidates_profile' candidate.url_name %}" role="button">
+                <img class="rounded-circle" src="{% static 'imgs/alckmin.jpg' %}" alt="Foto do Alckmin" width="140"
+                     height="140">
+            </a>
+            {% elif candidate.number == 50 %}
+            <a href="{%url 'candidates_profile' candidate.url_name %}" role="button">
+                <img class="rounded-circle" src="{% static 'imgs/boulos.jpg' %}" alt="Foto do Boulos" width="140"
+                     height="140">
+            </a>
+            {% elif candidate.number == 51 %}
+            <a href="{%url 'candidates_profile' candidate.url_name %}" role="button">
+                <img class="rounded-circle" src="{% static 'imgs/daciolo.jpg' %}" alt="Foto do Daciolo" width="140"
+                     height="140">
+            </a>
+            {% elif candidate.number == 54 %}
+            <a href="{%url 'candidates_profile' candidate.url_name %}" role="button">
+                <img class="rounded-circle" src="{% static 'imgs/goulart.jpg' %}" alt="Foto do João Goulart" width="140"
+                     height="140">
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+        {% if candidate.number == 15 or candidate.number == 18 or candidate.number == 30 or candidate.number == 51 %}
+        <div class="container"></div>
+        <br>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    {% endblock %}
+</div>
+

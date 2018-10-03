@@ -1,0 +1,159 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'imgs/election.ico' %}">
+
+    <title>Conheça seu Candidato</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'sticky-footer-navbar.css' %}" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+            integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+            crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+
+</head>
+
+<body style="background-color: lightgray">
+
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/">Eleições 2018</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/candidato/list">
+                        <div class="row">
+                            <div class="col-xs-1 mx-3">
+                                <i class="fas fa-users d-md-none"></i>
+                            </div>
+                            <div class="col-xs-11">
+                                Candidatos<span class="sr-only">(current)</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/vote/vote">
+                        <div class="row">
+                            <div class="col-xs-1 mx-3">
+                                <i class="fas fa-check d-md-none"></i>
+                            </div>
+                            <div class="col-xs-11">
+                                Deixe seu voto<span class="sr-only">(current)</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/sobre">
+                        <div class="row">
+                            <div class="col-xs-1 mx-3">
+                                <i class="fas fa-info-circle d-md-none"></i>
+                            </div>
+                            <div class="col-xs-11">
+                                Sobre<span class="sr-only">(current)</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<!-- Begin page content -->
+<main role="main" class="container">
+    <h1 class="mt-5" id="#motivacao">Motivação</h1>
+    <p class="lead text-justify">
+        Diante da grande massa de notícias falsas, boatos e comentários sobre os candidatos, essa página foi
+        desenvolvida para centralizar conteúdo e ajudar pessoas que estão em dúvida sobre a quem dar seu voto
+        a conhecer os candidatos e escolher o que melhor represente seus ideais, ou ajudar aqueles que já
+        escolheram a conhecer melhor seu candidato.
+    </p>
+    <p class="lead text-justify">
+        Leiam as páginas fornecidas, vejam os vídeos, e filtrem as informações com cuidado, nenhuma página é 100%
+        confiável, então não aceitem qualquer informação sem uma reflexão e sem basear-se em outras informações.
+        Usem as informações aqui fornecidas como uma base para fazer mais pesquisas e conhecer ainda mais os
+        candidatos. Vamos ter mais consciência das nossas ações a fim de construir um país melhor.
+    </p>
+
+    <p class="lead text-justify">
+        <b style="font-weight: bold">Importante:</b> A votação para presidente é importante, mas
+        presidente não governa sozinho, observem quem são seus vice-presidentes e escolham com
+        cautela seus senadores e deputados, pois estes é quem vão governar o país. Eu gostaria de
+        fazer algo parecido para os outros cargos, mas só tive tempo para os presidentes.
+    </p>
+
+    <p class="lead text-justify">
+    </p>
+    <div class="container text-center">
+        <img src="{% static 'imgs/cunha.jpg' %}" alt="Foto do Cunha" style="max-width: 100% !important;">
+    </div>
+    <br>
+
+    <h2 class="mt-5" id="news">Notícias gerais sobre as eleições</h2>
+    <ul class="list-inline">
+        {% for info in infos %}
+        <li class="row container list-inline-item">
+            <a href="{{info.url_name}}" target="_blank"><span class="text-muted">{{ info.name }}</span></a>
+        </li>
+        {% endfor %}
+    </ul>
+    <section class="resume-section p-3 p-lg-5" id="about">
+        <div class="social-icons">
+            <a class="p-1" href="https://www.facebook.com/rhaniel.magalhaesxavier" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="p-1" href="https://twitter.com/rhanielmx" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a class="p-1" href="https://www.instagram.com/rhanielmx/" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a class="p-1" href="tel:85996025480" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                <span class="text-muted">(85)99602-5480</span>
+            </a>
+        </div>
+
+        </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer" style="background-color: #363C42">
+    <div class="container text-center">
+        <span class="text-muted">Vote com juízo.</span>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="{% static '
+jquery - slim.min.js
+' %}"><\/script>'
+)</script>
+<script src="{% static 'popper.min.js' %}"></script>
+<script src="{% static 'bootstrap.min.js' %}"></script>
+</body>
+</html>

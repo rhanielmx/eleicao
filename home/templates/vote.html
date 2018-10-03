@@ -1,0 +1,282 @@
+{% load static %}
+{% load bootstrap %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'imgs/election.ico' %}">
+
+    <title>Deixe seu Voto</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'sticky-footer-navbar.css' %}" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'dc.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script src="{% static 'crossfilter.min.js' %}"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="{% static 'dc.min.js' %}"></script>
+
+  </head>
+
+  <body style="background-color: lightgray;">
+
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/">Eleições 2018</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href="/candidato/list">
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fas fa-users d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11">
+                            Candidatos<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+                <li class="nav-item active">
+                <a class="nav-link" href="/vote/vote">
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fas fa-check d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11">
+                            Deixe seu voto<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/sobre">
+                    <div class="row">
+                        <div class="col-xs-1 mx-3">
+                            <i class="fas fa-info-circle d-md-none"></i>
+                        </div>
+                        <div class="col-xs-11">
+                            Sobre<span class="sr-only">(current)</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Begin page content -->
+
+    <div class="row container text-center mx-auto" style="margin-top: 50px;">
+        <div class="" id="beforeChart"><h2>Intenção de voto antes de ler</h2></div>
+        <div class="" id="afterChart"><h2>Intenção de voto depois de ler</h2></div>
+    </div>
+    <div class="row container text-center mx-auto" style="margin-top: 50px;">
+        <table class="table table-hover" id="tableChart">
+        <thead>
+            <tr class="header">
+                <th>Antes</th>
+                <th>Depois</th>
+                <th>Idade</th>
+                <th>Sexo</th>
+            </tr>
+        </thead>
+    </table>
+        <div class="col-sm-12" id="paging">
+          Mostrando <span id="begin"></span>-<span id="end"></span> de <span id="size"></span>
+            <br>
+          <input id="Prev" class="btn btn-secondary" role="button" type="button" value="Anterior" onclick="javascript:prevPage()"/>
+          <input id="Next" class="btn btn-secondary" role="button" type="button" value="Próxima" onclick="javascript:nextPage()"/>
+        </div>
+    </div>
+
+    <main role="main" class="row container" style="margin:auto ;min-width: 400px">
+
+        <div class="row container" style="width:100%;">
+            <form method = "POST" class="form-group" style="width: 100%" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-control-sm ">
+                    <div class="row container" style="margin: auto">
+                        <div class="col-md-6">
+                            {{ form.before | bootstrap }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.after | bootstrap }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.sex | bootstrap }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.age | bootstrap }}
+                        </div>
+
+                        </div>
+                        <div class="row container mx-auto pb-4">
+                            <div class="col-8">
+                                Os campos que possuem idade 0, são os das pessoas que responderam antes desse campo ser
+                                adicionado, se você é uma delas e quer atualizar a informação, fale comigo que eu atualizo
+                                o campo.
+                                <br>
+                                <b style="font-weight: bold">Obs.:</b> Campos marcados com <b style="font-weight: bold">*</b> são obrigatórios.
+                            </div>
+                            <div class="col-4 text-right">
+                            <a href="/votes/votes"><button type="submit" class="btn btn-primary">Salvar</button></a>
+                        </div>
+                    </div>
+            </form>
+
+        </div>
+
+    </main>
+
+
+
+        <script type="text/javascript">
+            let beforeChart = dc.barChart('#beforeChart');
+            let afterChart = dc.barChart('#afterChart');
+            let tableChart = dc.dataTable('#tableChart');
+
+                let data_before = {{ before_votes_list | safe }};
+                let data_after = {{ after_votes_list | safe }};
+                let data_votes = {{ total_votes | safe }};
+
+                let facts_before = crossfilter(data_before);
+                let facts_after = crossfilter(data_after);
+                let facts_votes = crossfilter(data_votes);
+
+                //criando as dimensões
+                let numberDimBefore = facts_before.dimension(d=>d.Number);
+                let numberDimAfter = facts_after.dimension(d=>d.Number);
+                let partyDim = facts_votes.dimension(d=>d.age);
+
+                let byNumberBefore = numberDimBefore.group().reduceSum(d=>d.Votes);
+                let byNumberAfter = numberDimAfter.group().reduceSum(d=>d.Votes);
+
+                beforeChart.width(500)
+                         .height(375)
+                         .margins({top: 50, right: 50, bottom: 35, left: 40})
+                         .dimension(numberDimBefore)
+                         .x(d3.scaleBand())
+                         .xAxisLabel('Candidato(# Partido)')
+                         .xUnits(dc.units.ordinal)
+                         .yAxisLabel('Votos(%)')
+                         .renderHorizontalGridLines(true)
+                         .brushOn(false)
+                         .group(byNumberBefore)
+
+                         .gap(5);
+
+                afterChart.width(500)
+                         .height(375)
+                         .margins({top: 50, right: 50, bottom: 35, left: 40})
+                         .dimension(numberDimAfter)
+                         .x(d3.scaleBand())
+                         .xAxisLabel('Candidato(# Partido)')
+                         .xUnits(dc.units.ordinal)
+                         .yAxisLabel('Votos(%)')
+                         .renderHorizontalGridLines(true)
+                         .brushOn(false)
+                         .group(byNumberAfter)
+                         .gap(5);
+
+
+                tableChart.width(960)
+                    .height(80)
+                   .dimension(partyDim)
+                   .group(function (d){ return "";})
+                   .size(Infinity)
+                   .columns([
+                        {
+                          label: 'Antes',
+                          format: function(d) {
+                            return d.before;
+                          }
+                        },
+                        {
+                          label: 'Depois',
+                          format: function(d) {
+                            return d.after;
+                          }
+                        },
+                        {
+                          label: 'Idade',
+                          format: function(d) {
+                            return d.age;
+                          }
+                        },
+                        {
+                          label: 'Sexo',
+                          format: function(d) {
+                            return d.sex;
+                          }
+                        }
+                      ])
+                   .sortBy(function (d) {
+                      return d.id;
+                   })
+                   .order(d3.ascending);
+
+                let tableOffset = 0, tablePageSize = 10;
+
+                updateTable();
+                dc.renderAll()
+
+
+                function updateTable() {
+                    let totFilteredRecs = facts_votes.groupAll().value();
+                    // Adjust values of start and end record numbers for edge cases
+                    let end = tableOffset + tablePageSize > totFilteredRecs ? totFilteredRecs : tableOffset + tablePageSize;
+                    tableOffset = tableOffset >= totFilteredRecs ? Math.floor((totFilteredRecs - 1) / tablePageSize) * tablePageSize : tableOffset;
+                    tableOffset = tableOffset < 0 ? 0 : tableOffset; // In case of zero entries
+                    // Grab data for current page from the dataTable object
+                    tableChart.beginSlice(tableOffset);
+                    tableChart.endSlice(tableOffset + tablePageSize);
+                    // Update Table paging buttons and footer text
+                    d3.select('span#begin')
+                        .text(end === 0 ? tableOffset : tableOffset + 1); // Correct for "Showing 1 of 0" bug
+                    d3.select('span#end')
+                        .text(end);
+                    d3.select('#Prev.btn')
+                        .attr('disabled', tableOffset - tablePageSize < 0 ? 'true' : null);
+                    d3.select('#Next.btn')
+                        .attr('disabled', tableOffset + tablePageSize >= totFilteredRecs ? 'true' : null);
+                    d3.select('span#size').text(totFilteredRecs);
+                    tableChart.redraw();
+                  }
+
+                function nextPage() {
+                    tableOffset += tablePageSize;
+                    updateTable();
+                }
+                function prevPage() {
+                    tableOffset -= tablePageSize;
+                    updateTable();
+                }
+
+        </script>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="{% static 'jquery-slim.min.js' %}"><\/script>')</script>
+    <script src="{% static 'popper.min.js' %}"></script>
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+  </body>
+</html>
